@@ -1,179 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monument memory game</title>
-    <!--Fichiers CSS-->
-    <link rel="stylesheet" href="styles.css">
-    <!--CDN Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css" integrity="sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
+    <title>Jeu de mémoire</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="game">
-        <header class="header">
-            <h1>Jeu de mémoire - Les monuments célèbres</h1>
-            <div class="header_infos">
-                <!--Ajout du meilleur score en-tête-->
-                <p id="highscore"></p>
-                <p class="header_infos_timer"></p>
-                    <span id="timerRef">02:00</span>
+    <div class="container">
+        <h2>Monuments du monde</h2>
+        <div class="start">
+            <button>Commencer à jouer</button>
+            <div class="stats">
+                <div id="moves-count">Déplacements : 0</div>
+                <div id="timer">Temps : 0 secondes</div>
             </div>
-        </header>
-        <main class="main">
-            <div class="main_end_overlay">
-                <div class="main_end_content">
-                    <p>Jeu terminé</p>
-                    <button id="btn_restart" class="btn">Recommencer</button>
-                </div>
-            </div>
-            <div class="main_start_overlay">
-                <form class="form">
-                    <div class="form_content">
-                        <label for="name">Nom</label>
-                        <input type="text" id="name" maxlength="20" title="Entrez votre nom">
-                    </div>
-                    <span id="input_infos"></span>
-                    <button id="btn_start" class="btn">Commencer à jouer</button>
-                </form>
-            <!--Création des cartes de jeu-->
-            <!--Création de 2 blocs de cartes identiques pour associer par paire-->
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/alhambra_grenade.jpg" alt="Photo du palais de l'Albhambra de Grenade">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/alhambra_grenade.jpg" alt="Photo du palais de l'Albhambra de Grenade">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/colisee.jpg" alt="Photo du Colisée à Rome">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/colisee.jpg" alt="Photo du Colisée à Rome">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/grande_muraille.jpg" alt="Photo de la Grande Muraille de Chine">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/grande_muraille.jpg" alt="Photo de la Grande Muraille de Chine">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/maison_blanche.jpg" alt="Photo de la Maison Blanche à Washington">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/maison_blanche.jpg" alt="Photo de la Maison Blanche à Washington">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/parlement_budapest.jpg" alt="Photo du Parlement de Budapest">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/parlement_budapest.jpg" alt="Photo du Parlement de Budapest">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/temple_dor_kyoto.jpg" alt="Photo du Temple d'or à Kyoto">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/temple_dor_kyoto.jpg" alt="Photo du Temple d'or à Kyoto">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/tour_eiffel1.jpg" alt="Photo de la Tour Eiffel à Paris">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/tour_eiffel1.jpg" alt="Photo de la Tour Eiffel à Paris">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/tower_bridge.jpg" alt="Photo du Tower Bridge à Londres">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-            <div class="main_container_card">
-                <div class="card">
-                    <div class="card_front">
-                        <img src="assets/img/tower_bridge.jpg" alt="Photo du Tower Bridge à Londres">
-                    </div>
-                    <div class="card_back"></div>
-                </div>
-            </div>
-        </main>
+        </div>
+        <div id="game-board"></div>
+        <div class="success">BRAVO ! Vous avez gagné !</div>
+        <button class="reset" onclick="window.location.reload();">Recommencer le jeu</button>
     </div>
-    <!--Ajout du fichier Javascript-->
-    <script src="app.js"></script>
-    
-    </html>
-    
+
+    <script src="script.js"></script>
 </body>
+</html>
