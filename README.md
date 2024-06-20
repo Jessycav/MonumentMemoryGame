@@ -1,5 +1,5 @@
 # MonumentMemoryGame
-Ce projet a été réalisé pour la rédaction du dossier professionnel nécessaire pour obtenir le titre RNCP Dévloppeur Web et Web mobile.
+Ce projet a été réalisé pour la rédaction du dossier professionnel nécessaire pour obtenir le titre RNCP Développeur Web et Web mobile.
 Ce projet utilise les langages HTML, CSS et Javascript.
 L'éditeur de texte choisi est VisualStudio Code.
 
