@@ -1,4 +1,4 @@
-// Définir le tableau des 8 images à utiliser pour le jeu//
+// Définir le tableau des 8 images à utiliser pour le jeu
 const cards = [
     'images/alhambra_grenade.jpg',
     'images/colisee.jpg',
@@ -12,26 +12,19 @@ const cards = [
 
 const defaultImage = 'images/interrogation.jpg';
 
-const moves = document.getElementById('moves-count');
-const timerValue = document.getElementById('.timer');
-const startButton = document.getElementById('button');
-const success = document.getElementById('.success');
-
-
-// Récupérer l'espace de jeu //
+// Récupérer l'espace de jeu 
 const gameBoard = document.getElementById('game-board');
 
-// Créer une variable pour stocker les paires //
+// Créer une variable pour stocker les paires 
 let selectedCards = [];
 
-
-// Créer les cartes //
+// Créer les cartes 
 function createCard(cardSource) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.dataset.value = cardSource;
 
-// Ajouter le contenu de la carte //
+// Ajouter le contenu de la carte 
     const cardContent = document.createElement('img');
     cardContent.classList.add('card-content');
     cardContent.src = cardSource;
@@ -42,7 +35,7 @@ function createCard(cardSource) {
     return card;
 }
 
-// Dupliquer les images //
+// Dupliquer les images 
 function duplicateArray(arraySimple) {
     let arrayDouble = [];
     arrayDouble.push(...arraySimple);
@@ -52,38 +45,41 @@ function duplicateArray(arraySimple) {
 }
 
 function shuffleArray(arrayToshuffle) {
-// Trier le tableau //
+// Trier le tableau 
     const arrayShuffled = arrayToshuffle.sort(() => 0.5 - Math.random());
     return arrayShuffled;
 }
-
-// Afficher la carte au clic //
+// Afficher la carte au clic 
 function onCardClick(e) {
-    const card = e.target.parentElement;
-    card.classList.add('flip');
+    const card = e.target.parentElement
+    card.classList.add('flip')
     
-// Vérifier des paires //
+// Vérifier des paires 
     selectedCards.push(card);
-    //Définir le nombre de cartes à comparer //
+    //Définir le nombre de cartes à comparer 
     if(selectedCards.length == 2){
         setTimeout(() => {
-        // Comparer les cartes sélectionnées //
+        // Comparer les cartes sélectionnées 
         if(selectedCards[0].dataset.value == selectedCards[1].dataset.value) {
-            // Paire trouvée //
+            // Paire trouvée 
             selectedCards[0].classList.add("matched");
             selectedCards[1].classList.add("matched");
             selectedCards[0].removeEventListener('click', onCardClick);
             selectedCards[1].removeEventListener('click', onCardClick);
-
+            
             const allCardsNotMatched = document.querySelectorAll('.card:not(.matched)');
             console.log(allCardsNotMatched.length);
             if(allCardsNotMatched.length == 0){
-                // Le joueur a gagné //
-                alert("Bravo, vous avez gagné");
+                // Le joueur a gagné 
+                alert`
+                <span class="success-text">
+                    BRAVO ! Vous avez gagné !<br />
+                </span>
+                `
             }
         }
         else {
-            // Paire non trouvée // 
+            // Paire non trouvée 
             selectedCards[0].classList.remove("flip");
             selectedCards[1].classList.remove("flip");    
         }
@@ -93,10 +89,10 @@ function onCardClick(e) {
 }
 
 let allCards = duplicateArray(cards);
-// Mélanger le tableau //
+// Mélanger le tableau 
 allCards = shuffleArray(allCards);
 
-// Parcourir le tableau, créer une carte et l'ajouter à l'espace de jeu //
+// Parcourir le tableau, créer une carte et l'ajouter à l'espace de jeu 
 allCards.forEach(card => {
     const cardHtml = createCard(card);
     gameBoard.appendChild(cardHtml);
